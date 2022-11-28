@@ -1,0 +1,7 @@
+
+Create table people
+(
+sno integer primary KEY,
+name varchar(30) not null,
+city varchar(30) not NULL
+);
