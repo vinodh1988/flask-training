@@ -5,3 +5,7 @@ sno integer primary KEY,
 name varchar(30) not null,
 city varchar(30) not NULL
 );
+
+insert into people values(1,'Rahul','Chennai');
+insert into people values(2,'Roshan','Jaipur');
+insert into people values(3,'Krishna','Mumbai');
