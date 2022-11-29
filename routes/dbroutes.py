@@ -42,4 +42,19 @@ def updatePeople(sno):
         
         return {"Status": "Not updated- May be id not exists"}, 500
 
+@app.route('/people/<int:sno>',methods=['delete'])
+def deletePeople(sno):
+    try:
+        person=Person.query.get(sno)
+        if(person):
+             db.session.delete(person)
+             db.session.commit()
+        else:
+            raise Exception("No such sno");
+        return {"Status": "successfully update"}, 200
+    except Exception as e:
+        print(e)
+        return {"Status": "Not updated- May be id not exists"}, 500
+
+
 
