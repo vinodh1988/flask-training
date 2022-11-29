@@ -2,3 +2,8 @@ h2{
     color: darkblue;
     font:arial;
 }
+
+.info{
+    height: 300px;
+    width: 500px;
+}
