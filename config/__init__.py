@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 basedir=os.path.abspath(os.path.dirname(__file__))
 
 print(basedir)
-app=Flask(__name__)
+app=Flask(__name__,template_folder='../templates')
 
 @app.route("/files/<path:path>")
 def get_file(path):
