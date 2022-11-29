@@ -1,4 +1,5 @@
 from config import app,db
+#from database import Person
 from database import Person
 from flask import jsonify,request,abort
 
@@ -20,3 +21,25 @@ def addPeople():
         return {"status":"success"}, 201
     except:
         abort ( {"status": "Server error"}, 500)
+
+#Patch is for partial updation , in a given resource if you partially update database
+#Put , if you completely update the record or replace record without changing the id
+@app.route('/people/<int:sno>',methods=['PUT','PATCH'])
+def updatePeople(sno):
+    try:
+        person=Person.query.get(sno)
+        if(person):
+             input=request.get_json()
+             if('name' in input.keys()):
+                person.name=input['name']
+             if('city' in input.keys()):
+                person.city=input['city']
+             db.session.commit()
+        else:
+            raise Exception("No such sno");
+        return {"Status": "successfully update"}, 200
+    except Exception as e:
+        
+        return {"Status": "Not updated- May be id not exists"}, 500
+
+
